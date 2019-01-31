@@ -49,7 +49,7 @@ function gameOver() {
   gameOverAudio.setAttribute('src', "sounds/wrong.mp3");
 	gameOverAudio.play();
 	$("body").addClass("game-over");
-	setTimeout(function(){$("body").removeClass("game-over")}, 300);
+	setTimeout(function(){ $("body").removeClass("game-over"); }, 300);
 }
 
 function reset() {
@@ -65,8 +65,10 @@ $(".btn").on("click", function(event) {
 		playSound(userChosenColor);
 		animatePress(userChosenColor);
 		if (checkAnswer()) { 
-			nextInSequence();
-			userClickedPattern = [];
+			setTimeout(function(){ 
+				nextInSequence();
+				userClickedPattern = [];
+			}, 1000);
 		}
 	} else {
 		alert("You must first press any key to start the game!");
